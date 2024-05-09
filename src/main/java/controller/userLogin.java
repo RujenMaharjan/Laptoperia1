@@ -74,7 +74,7 @@ public class userLogin extends HttpServlet {
 						HttpSession session = request.getSession();
 						session.setAttribute("username", username);
 						session.setMaxInactiveInterval(8 * 60);
-						response.sendRedirect(request.getContextPath()+"/profile");
+						response.sendRedirect(request.getContextPath()+"/index");
 					} else {
 						request.setAttribute("error", "invalid username or password");
 						doGet(request, response);

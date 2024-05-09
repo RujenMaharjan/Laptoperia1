@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
+<%@ page import="java.util.UUID"  %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +9,12 @@
 <title>Product</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
 
-    <link rel="stylesheet" href="Css/admin.css">
+    <link rel="stylesheet" href="Css/adminstyle.css">
 </head>
 <body>
     
+    <!-- <a href="productform.html" class="add-button">Add Product</a> -->
+
     <section id="menu">
     <div class="logo">
         <img src="images/logo.jpg" alt="">
@@ -39,9 +43,9 @@
         <h3 class="i-name">
             Products
         </h3>
-
-        <!-- <button class="add-button">Add List</button> -->
-    
+		<form action="<%=request.getContextPath() %>/addproduct">
+        <button class="add-button" type="submit">Add Product</button>
+    	</form>
         <!-- <div class="values">
             <div class="val-box">
                 <i class="fas fa-users"></i>
@@ -77,8 +81,6 @@
                 <thead>
                     <tr>
                         <td>Name</td>
-                        <td>Category</td>
-                        <td>Brand</td>
                         <td>Price</td>
                         <td>Stock</td>
                         <td>Action</td>
@@ -86,126 +88,22 @@
                     </tr>
                 </thead>
                 <tbody>
+                	<c:forEach var="product" items="${listOfProducts}">
                     <tr>
                         <td class="people">
-                            <img src="images/casdel.png" alt="">
                             <div class="people-de">
-                                <h5>Dell icore 10</h5>
+                                <h5><c:out value="${product.productName}"></c:out></h5>
                                 <!-- <p>Maitri@example.com</p> -->
                             </div>
                         </td>
-                        <td class="people-des">
-                            <!-- <h5>Software Engineer</h5> -->
-                            <p>2-in-1</p>
-                        </td>
-                        <td class="number"><p>Dell</p></td>
-                        <td class="number"><p>Rs.90,000</p></td>
-                        <td class="role"><p>35</p></td>
+                        <td class="number"><p><c:out value="${product.productPrice }"></c:out></p></td>
+                        <td class="role"><p><c:out value="${product.productQuantity }"></c:out></p></td>
                         <td class="del">
                             <a href="#" class="edit">Edit</a>
                             <a href="#" class="delete">Delete</a>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="people">
-                            <img src="images/len.jpeg" alt="">
-                            <div class="people-de">
-                                <h5>Lenova Legion 7</h5>
-                                <!-- <p>Maitri@example.com</p> -->
-                            </div>
-                        </td>
-                        <td class="people-des">
-                            <!-- <h5>Software Engineer</h5> -->
-                            <p>Gaming Laptop</p>
-                        </td>
-                        <td class="number"><p>Lenovo</p></td>
-                        <td class="number"><p>Rs.1,45,000</p></td>
-                        <td class="role"><p>25</p></td>
-                        <td class="del">
-                            <a href="#" class="edit">Edit</a>
-                            <a href="#" class="delete">Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="people">
-                            <img src="images/mac.jpg_large" alt="">
-                            <div class="people-de">
-                                <h5>Macbook M1</h5>
-                                <!-- <p>Maitri@example.com</p> -->
-                            </div>
-                        </td>
-                        <td class="people-des">
-                            <!-- <h5>Software Engineer</h5> -->
-                            <p>Business Laptop</p>
-                        </td>
-                        <td class="number"><p>Mac book</p></td>
-                        <td class="number"><p>Rs.1,75,000</p></td>
-                        <td class="role"><p>15</p></td>
-                        <td class="del">
-                            <a href="#" class="edit">Edit</a>
-                            <a href="#" class="delete">Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="people">
-                            <img src="images/acernitro.jpeg" alt="">
-                            <div class="people-de">
-                                <h5>Acer Nitro 5</h5>
-                                <!-- <p>Maitri@example.com</p> -->
-                            </div>
-                        </td>
-                        <td class="people-des">
-                            <!-- <h5>Software Engineer</h5> -->
-                            <p>Gaming laptop</p>
-                        </td>
-                        <td class="number"><p>Acer</p></td>
-                        <td class="number"><p>Rs.1,35,000</p></td>
-                        <td class="role"><p>19 </p></td>
-                        <td class="del">
-                            <a href="#" class="edit">Edit</a>
-                            <a href="#" class="delete">Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="people">
-                            <img src="images/asusvivo.jpeg" alt="">
-                            <div class="people-de">
-                                <h5>Asus Vivobook</h5>
-                                <!-- <p>Maitri@example.com</p> -->
-                            </div>
-                        </td>
-                        <td class="people-des">
-                            <!-- <h5>Software Engineer</h5> -->
-                            <p>Business Laptop</p>
-                        </td>
-                        <td class="number"><p>Asus</p></td>
-                        <td class="number"><p>Rs.1,95,000</p></td>
-                        <td class="role"><p>35</p></td>
-                        <td class="del">
-                            <a href="#" class="edit">Edit</a>
-                            <a href="#" class="delete">Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="people">
-                            <img src="images/miskatana.webp" alt="">
-                            <div class="people-de">
-                                <h5>Msi Katana</h5>
-                                <!-- <p>Maitri@example.com</p> -->
-                            </div>
-                        </td>
-                        <td class="people-des">
-                            <!-- <h5>Software Engineer</h5> -->
-                            <p>Gaming</p>
-                        </td>
-                        <td class="number"><p>Msi</p></td>
-                        <td class="number"><p>Rs.1,45,000</p></td>
-                        <td class="role"><p>7</p></td>
-                        <td class="del">
-                            <a href="#" class="edit">Edit</a>
-                            <a href="#" class="delete">Delete</a>
-                        </td>
-                    </tr>
+                    </c:forEach>
                    
                 </tbody>
             </table>

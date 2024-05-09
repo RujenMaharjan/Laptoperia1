@@ -11,7 +11,7 @@ href="Css/studentLogin.css" />
 <body>
 	<div class="login-box">
 		<h2>Login</h2>
-		<p style="color:red"></p>
+		<p style="color:red">${error}</p>
 		<form action="<%=request.getContextPath() %>/login" method="post">
 			<div class="row">
 				<div class="col">
